@@ -5,12 +5,12 @@ import json
 from deep_translator import GoogleTranslator
 
 # Each phrase in the lyrics need to be seperated with ";". 
-# The script will automatically geneerate fill in the 
+# The script will automatically generate fill in the 
 # blank questions for each phrase. The script will also take
 # random words and create translation questions. The amount
 # of translation questions generated can be adjusted at the bottom.
 # Have python installed and run the command "py generateQuestions.py".
-# You can change the file input at the bottom.
+# You can change the input file at the bottom.
 
 def generate_fill_in_the_blank_questions(file_name):
     script_dir = os.path.dirname(os.path.abspath(__file__))
