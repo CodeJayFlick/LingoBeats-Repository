@@ -11,18 +11,18 @@ export default function Dashboard() {
         path: "/caballito_blanco.mp4",
       },
       {
-        title: "Song 2",
-        artist: "Artist 2",
-        length: "2:45",
+        title: "Tingalayo",
+        artist: "Daria",
+        length: "2:16",
         score: 88,
-        path: "",
+        path: "/tingalayo.mp4",
       },
       {
-        title: "Song 3",
-        artist: "Artist 3",
-        length: "2:30",
-        score: 92,
-        path: "",
+        title: "Mamacita",
+        artist: "Mike Leite",
+        length: "3:14", 
+        score: 90,
+        path: "/mamacita.mp4", // Placeholder path
       },
       {
         title: "Song 4",
@@ -41,11 +41,11 @@ export default function Dashboard() {
     ],
     medium: [
       {
-        title: "Song 1",
-        artist: "Artist 1",
-        length: "4:20",
+        title: "A La Loco",
+        artist: "Mila Egred",
+        length: "2:31", 
         score: 82,
-        path: "",
+        path: "/a_la_loco.mp4",
       },
       {
         title: "Song 2",
@@ -78,11 +78,11 @@ export default function Dashboard() {
     ],
     hard: [
       {
-        title: "Song 1",
-        artist: "Artist 1",
-        length: "5:10",
+        title: "Vuela Libre",
+        artist: "Javier De Lucas",
+        length: "3:20",
         score: 65,
-        path: "",
+        path: "/vuela_libre.mp4", // Placeholder path
       },
       {
         title: "Song 2",
@@ -122,7 +122,7 @@ export default function Dashboard() {
     return Math.round(total / songs.length);
   };
 
-  //  user data
+  // User data
   const user = {
     isGuest: false,
     initials: "HM",
@@ -135,7 +135,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-500 to-indigo-600 p-8">
-      {/* Profile Icon*/}
+      {/* Profile Icon */}
       <div className="absolute top-4 right-4">
         {user.isGuest ? (
           <Link
@@ -245,9 +245,11 @@ function SongCard({ song }) {
       <p className="text-sm italic text-gray-600">{song.artist}</p>
       <p className="text-sm text-gray-600">{song.length}</p>
       <p className="text-sm text-gray-600">Score: {song.score}%</p>
-      <button className="mt-2 w-full bg-blue-500 text-white py-1 rounded-lg hover:bg-blue-600 transition">
-        Take Quiz
-      </button>
+      <Link to="/quiz" state={song}>
+        <button className="mt-2 w-full bg-blue-500 text-white py-1 rounded-lg hover:bg-blue-600 transition">
+          Take Quiz
+        </button>
+      </Link>
     </div>
   );
 }
