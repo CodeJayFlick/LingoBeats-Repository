@@ -82,8 +82,8 @@ def generate_translation_questions(file_name, num_questions=10, num_options=4):
 
         translation_questions.append({
             "question": f"What is the English translation of '{word}'?",
-            "answer": correct_translation,
-            "options": options
+            "options": options,
+            "answer": correct_translation
         })
 
     return translation_questions
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     # Wrap the questions in a quiz object
     quiz = {
         "name": song_name,
-        "questions": fill_in_the_blank_questions + translation_questions
+        "quiz": fill_in_the_blank_questions + translation_questions
     }
 
     print(json.dumps(quiz, indent=2, ensure_ascii=False))
