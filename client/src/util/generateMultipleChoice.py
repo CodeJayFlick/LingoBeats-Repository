@@ -28,7 +28,7 @@ def generate_fill_in_the_blank_questions(file_name, num_options=4):
         lyrics = file.read()
 
     phrases = [phrase.strip() for phrase in lyrics.split(';') if phrase.strip()]
-    all_words = list(set(clean_word(w) for w in lyrics.replace(';', ' ').split() if w))  # Unique words without punctuation
+    all_words = list(set(clean_word(w) for w in lyrics.replace(';', ' ').split() if w)) 
     questions = []
 
     for phrase in phrases:
@@ -37,7 +37,7 @@ def generate_fill_in_the_blank_questions(file_name, num_options=4):
             missing_word = random.choice(words)
             blank_phrase = phrase.replace(missing_word, '_' * len(missing_word), 1)
 
-            # Generate multiple-choice options (random words from lyrics, ensuring uniqueness)
+            # Generate multiple-choice options
             options = [missing_word] + random.sample([w for w in all_words if w and w != missing_word], min(num_options - 1, len(all_words) - 1))
             random.shuffle(options)
 
@@ -63,7 +63,6 @@ def generate_translation_questions(file_name, num_questions=10, num_options=4):
     translator = GoogleTranslator(source="es", target="en")
     translations = {}
 
-    # Pre-translate all words to avoid duplicate API calls
     for word in words:
         try:
             translations[word] = clean_word(translator.translate(word))
@@ -76,7 +75,7 @@ def generate_translation_questions(file_name, num_questions=10, num_options=4):
         if not correct_translation:
             continue
 
-        # Generate multiple-choice options (random translations of other words)
+        # Generate multiple-choice options
         distractors = [t for t in translations.values() if t and t != correct_translation]
         options = [correct_translation] + random.sample(distractors, min(num_options - 1, len(distractors)))
         random.shuffle(options)
@@ -92,11 +91,15 @@ def generate_translation_questions(file_name, num_questions=10, num_options=4):
 
 if __name__ == "__main__":
     file_name = "lyrics.txt"
+    song_name = "Caballito Blanco"
+
     fill_in_the_blank_questions = generate_fill_in_the_blank_questions(file_name)
     translation_questions = generate_translation_questions(file_name, 10)
 
-    print("Fill in the Blank Questions:")
-    print(json.dumps(fill_in_the_blank_questions, indent=2, ensure_ascii=False))
+    # Wrap the questions in a quiz object
+    quiz = {
+        "name": song_name,
+        "questions": fill_in_the_blank_questions + translation_questions
+    }
 
-    print("\nTranslation Questions:")
-    print(json.dumps(translation_questions, indent=2, ensure_ascii=False))
+    print(json.dumps(quiz, indent=2, ensure_ascii=False))
