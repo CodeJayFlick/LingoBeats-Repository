@@ -19,7 +19,7 @@ Ensure you have the following installed:
    ```
 
 3. **Travel to the Client folder**
-. ```sh
+   ```sh
    cd client
    ```
 
