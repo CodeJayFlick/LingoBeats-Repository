@@ -10,8 +10,6 @@ const uri = process.env.MONGODB_URI; // Processes connection string to the datab
 const { MongoClient } = require('mongodb'); // MongoDB client Instance
 const bcrypt = require('bcrypt'); // Module for integrating encryption to password usage
 
-//const uri = "mongodb+srv://franec63:Gr34sySw33t!@lingobeatscluster.895qr.mongodb.net/?retryWrites=true&w=majority&appName=LingoBeatsCluster";
-
 // Creates a new MongoClient
 const client = new MongoClient(uri);
 
