@@ -1,24 +1,37 @@
-const express = require("express");
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
+
 const app = express();
-const path = ("path")
 
-/*
-// Middleware to parse any incoming json requests
-app.use(express.json())
+// Middleware
+app.use(cors({
+    origin: 'http://localhost:5173', // Your frontend URL
+    credentials: true
+  }));
+app.use(express.json());
 
-// Utilizing the authentication and dashboard routes to be integrated to the MongoDB
-// Database Cluster
-app.use('/api/auth', require('./Routes/auth_routes.js'));
-app.use('/api/dashboard', require('./Routes/dashboard_routes.js'));
-*/
+// Routes
+const authRoutes = require('./authRoutes');
+app.use('/api/auth', authRoutes);
+// Test MongoDB connection on startup
+(async () => {
+    try {
+      const { connectToDB } = require('./db');
+      await connectToDB();
+    } catch (err) {
+      console.error('❌ Failed to connect to MongoDB:', err.message);
+      process.exit(1); // Crash the app if DB is critical
+    }
+  })();
 
-/*
-app.listen(27017, () => {
-    console.log("Port connected");
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Something went wrong!' });
 });
-*/
 
-const PORT = process.env.PORT || 5173;
+const PORT = process.env.PORT || 3001; // Change from 5173 to 3001 or another available port
 app.listen(PORT, () => {
-    console.log(`Server running on Port: ${PORT}`);
-});]
+  console.log(`Server running on port ${PORT}`);
+});
