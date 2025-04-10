@@ -6,10 +6,14 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError("");
+    
     try {
       const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
@@ -20,15 +24,20 @@ export default function Login() {
       const data = await response.json();
       
       if (response.ok) {
-        // Store token in localStorage
+        // Store authentication data
         localStorage.setItem('token', data.token);
-        // Redirect to dashboard
-        navigate('/dashboard');
+        localStorage.setItem('username', data.username);
+        
+        // Redirect to dashboard - using window.location to ensure full state reset
+        window.location.href = '/dashboard';
       } else {
-        throw new Error(data.error || 'Login failed');
+        throw new Error(data.error || 'Login failed. Please try again.');
       }
     } catch (err) {
       setError(err.message);
+      console.error('Login error:', err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -49,6 +58,7 @@ export default function Login() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
+              autoFocus
             />
           </div>
           <div>
@@ -64,14 +74,17 @@ export default function Login() {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+            disabled={isLoading}
+            className={`w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition ${
+              isLoading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
           >
-            Login
+            {isLoading ? 'Logging in...' : 'Login'}
           </button>
         </form>
         <div className="text-center mt-4">
           <Link to="/signup" className="text-blue-500 hover:underline">
-            Signup
+            Create Account
           </Link>
           <span className="mx-2">|</span>
           <Link to="/dashboard" className="text-blue-500 hover:underline">

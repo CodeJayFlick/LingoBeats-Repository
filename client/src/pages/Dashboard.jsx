@@ -1,6 +1,39 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function Dashboard() {
+  // State for dropdown visibility and user data
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [user, setUser] = useState({
+    isGuest: true,
+    username: "",
+  });
+
+  // Check if user is logged in on component mount
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('username');
+    
+    if (token && username) {
+      setUser({
+        isGuest: false,
+        username: username
+      });
+    }
+  }, []);
+
+  // Handle logout
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    setUser({
+      isGuest: true,
+      username: ""
+    });
+    window.location.reload(); // Refresh to update UI
+  };
+
+  // Song lists data
   const songLists = {
     easy: [
       {
@@ -22,7 +55,7 @@ export default function Dashboard() {
         artist: "Mike Leite",
         length: "3:14", 
         score: 90,
-        path: "/mamacita.mp4", // Placeholder path
+        path: "/mamacita.mp4",
       },
       {
         title: "Song 4",
@@ -82,7 +115,7 @@ export default function Dashboard() {
         artist: "Javier De Lucas",
         length: "3:20",
         score: 65,
-        path: "/vuela_libre.mp4", // Placeholder path
+        path: "/vuela_libre.mp4",
       },
       {
         title: "Song 2",
@@ -115,72 +148,88 @@ export default function Dashboard() {
     ],
   };
 
-  // Calculate average scores dynamically
+  // Calculate average scores
   const calculateAvgScore = (songs) => {
     if (songs.length === 0) return 0;
     const total = songs.reduce((sum, song) => sum + song.score, 0);
     return Math.round(total / songs.length);
   };
 
-  // User data
-  const user = {
-    isGuest: false,
-    initials: "HM",
-    avgScores: {
-      easy: calculateAvgScore(songLists.easy),
-      medium: calculateAvgScore(songLists.medium),
-      hard: calculateAvgScore(songLists.hard),
-    },
+  // Toggle dropdown
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.user-dropdown')) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-500 to-indigo-600 p-8">
-      {/* Profile Icon */}
-      <div className="absolute top-4 right-4">
+      {/* User Dropdown */}
+      <div className="absolute top-4 right-4 user-dropdown">
         {user.isGuest ? (
           <Link
-            to="/login"
+            to="/"
             className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
           >
             Log In
           </Link>
         ) : (
           <div className="relative">
-            <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-800 font-bold">
-              {user.initials}
-            </div>
-            <div className="absolute right-0 mt-2 w-48 bg-gray-100 rounded-lg shadow-lg hidden">
-              <Link
-                to="/profile"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-              >
-                View Profile
-              </Link>
-              <Link
-                to="/login"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-              >
-                Log Out
-              </Link>
-            </div>
+            <button
+              onClick={toggleDropdown}
+              className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-800 font-bold hover:bg-gray-200 transition cursor-pointer"
+            >
+              {user.username.charAt(0).toUpperCase()}
+            </button>
+            
+            {/* Dropdown Menu */}
+            {isDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-10">
+                <Link
+                  to="/profile"
+                  className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-t-lg"
+                  onClick={() => setIsDropdownOpen(false)}
+                >
+                  Profile
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-b-lg"
+                >
+                  Log Out
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>
 
       {/* Main Dashboard Content */}
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold text-white text-center mb-8">
-          Dashboard
-        </h1>
+      <h1 className="text-3xl font-bold text-white text-center mb-8">
+  {user.isGuest ? "Guest's Dashboard" : `${user.username}'s Dashboard`}
+      </h1>
 
         {/* Song Lists */}
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Easy List */}
           <div>
             <h2 className="text-2xl font-bold text-white mb-4">
               Easy{" "}
               <span className="text-lg">
-                Avg. Score: {user.avgScores.easy}%
+                Avg. Score: {calculateAvgScore(songLists.easy)}%
               </span>
             </h2>
             <div className="space-y-4">
@@ -195,7 +244,7 @@ export default function Dashboard() {
             <h2 className="text-2xl font-bold text-white mb-4">
               Medium{" "}
               <span className="text-lg">
-                Avg. Score: {user.avgScores.medium}%
+                Avg. Score: {calculateAvgScore(songLists.medium)}%
               </span>
             </h2>
             <div className="space-y-4">
@@ -210,7 +259,7 @@ export default function Dashboard() {
             <h2 className="text-2xl font-bold text-white mb-4">
               Hard{" "}
               <span className="text-lg">
-                Avg. Score: {user.avgScores.hard}%
+                Avg. Score: {calculateAvgScore(songLists.hard)}%
               </span>
             </h2>
             <div className="space-y-4">
