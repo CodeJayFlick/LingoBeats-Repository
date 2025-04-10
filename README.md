@@ -18,10 +18,15 @@ Ensure you have the following installed:
    pnpm i
    ```
 
-3. **Start the Development Server**
+3. **Travel to the Client folder**
+. ```sh
+   cd client
+   ```
+
+4. **Start the Development Server**
    ```sh
    pnpm run dev
    ```
 
-4. **Access the Application**
+5. **Access the Application**
    - Open your browser and go to `http://localhost:5173/` (or the port specified in the terminal).
