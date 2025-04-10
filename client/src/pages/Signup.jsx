@@ -25,7 +25,7 @@ export default function Signup() {
   
       const data = await response.json(); // Now safe to parse
       console.log('Success:', data); // Debug log
-      navigate('/login');
+      navigate('/');
     } catch (err) {
       setError(err.message);
       console.error('Signup error:', err); // Debug log
