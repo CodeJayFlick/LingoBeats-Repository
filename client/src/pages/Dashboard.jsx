@@ -45,35 +45,35 @@ export default function Dashboard() {
         artist: "Mila Egred",
         length: "2:31", 
         score: 82,
-        path: "/a_la_loco.mp4",
+        path: "/a_la_loco.mp4", //Placeholder Path
       },
       {
         title: "De Colores",
-        artist: "Artist 2",
-        length: "3:55",
+        artist: "Joan Baez",
+        length: "2:26",
         score: 76,
-        path: "",
+        path: "/de_colores", //Placeholder Path
       },
       {
         title: "El Barquito Chiquitito",
-        artist: "Artist 3",
-        length: "4:00",
+        artist: "tonycantando",
+        length: "2:13",
         score: 80,
-        path: "",
+        path: "/elbarquitochiquitito", //Placeholder Path
       },
       {
         title: "La Gallina Turuleca",
-        artist: "Artist 4",
-        length: "3:45",
+        artist: "El Reino Infantil",
+        length: "2:55",
         score: 78,
-        path: "",
+        path: "la_gallina_infantil", //Placeholder Path
       },
       {
         title: "Mi Burrito Sabanero",
-        artist: "Artist 5",
-        length: "4:10",
+        artist: "Rondalla Y Coro Infantil Suarez",
+        length: "3:10",
         score: 85,
-        path: "",
+        path: "mi_buritto_sabanero", //Placeholder Path
       },
     ],
     hard: [
