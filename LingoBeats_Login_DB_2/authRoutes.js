@@ -101,4 +101,61 @@ router.get('/user/scores', authMiddleware, async (req, res) => {
   }
 });
 
+// Get quiz by song name
+router.get('/quiz/:songName', async (req, res) => {
+  try {
+    const db = await connectToDB();
+    const songName = decodeURIComponent(req.params.songName);
+    const quiz = await db.collection('quizzes').findOne({ name: songName });
+    
+    if (!quiz) {
+      return res.status(404).json({ error: "Quiz not found" });
+    }
+    
+    res.json(quiz);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch quiz" });
+  }
+});
+
+// Update user's quiz score (protected route)
+router.post('/quiz/update-score', authMiddleware, async (req, res) => {
+  try {
+    const { quizName, newScore } = req.body;
+    const db = await connectToDB();
+    
+    // Get current user data
+    const user = await db.collection('users').findOne(
+      { _id: new ObjectId(req.user.userId) }
+    );
+    
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Find the quiz and update scores
+    const updatedQuizzes = user.quizzes.map(quiz => {
+      if (quiz.name === quizName) {
+        // Keep only the last 9 scores and add the new one
+        const updatedScores = [...quiz.scores.slice(-9), newScore];
+        return { ...quiz, scores: updatedScores };
+      }
+      return quiz;
+    });
+
+    // Update in database
+    await db.collection('users').updateOne(
+      { _id: new ObjectId(req.user.userId) },
+      { $set: { quizzes: updatedQuizzes } }
+    );
+
+    res.json({ success: true });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to update score" });
+  }
+});
+
+
 module.exports = router;
