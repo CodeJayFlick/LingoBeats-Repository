@@ -22,7 +22,7 @@ export default function Dashboard() {
         artist: "Appuseries",
         length: "2:44", 
         score: 90,
-        path: "/unelephante.mp4", // Placeholder path
+        path: "/un_elephante.mp4", // Placeholder path
       },
       {
         title: "Canción infantil de la Lluvia Para Niños y Bebés",
@@ -86,24 +86,24 @@ export default function Dashboard() {
       },
       {
         title: "Mambru Se Fue A La Guerra",
-        artist: "Artist 2",
-        length: "4:45",
+        artist: "Voces Infantiles",
+        length: "1:55",
         score: 70,
-        path: "",
+        path: "mambru_se_fue_a_la_guerra", //Placeholder Path
       },
       {
         title: "Enloquecer",
-        artist: "Artist 3",
-        length: "5:30",
+        artist: "Mike Leite",
+        length: "3:06",
         score: 68,
-        path: "",
+        path: "enloquecer", //Placeholder Path
       },
       {
         title: "La Mar Estaba Serena",
-        artist: "Artist 4",
-        length: "4:55",
+        artist: "El Reino Infantil",
+        length: "2:51",
         score: 72,
-        path: "",
+        path: "la_mar_estaba_serena", //Placeholder Path
       },
       {
         title: "Mamacita",
