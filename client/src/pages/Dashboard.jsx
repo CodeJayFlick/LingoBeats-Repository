@@ -8,35 +8,35 @@ export default function Dashboard() {
         artist: "Joel Valle",
         length: "1:14",
         score: 95,
-        path: "/caballito_blanco.mp4",
+        path: "/caballito_blanco.mp4", //Completed
       },
       {
         title: "Tingalayo",
         artist: "Daria",
         length: "2:16",
         score: 88,
-        path: "/tingalayo.mp4",
+        path: "/tingalayo.mp4", //Placeholder path
       },
       {
-        title: "Un Elehante Se Balanceaba",
-        artist: "Mike Leite",
-        length: "3:14", 
+        title: "Un Elephante Se Balanceaba",
+        artist: "Appuseries",
+        length: "2:44", 
         score: 90,
-        path: "/mamacita.mp4", // Placeholder path
+        path: "/unelephante.mp4", // Placeholder path
       },
       {
-        title: "Cancion infantil de la Lluvia Para Ninos y Bebes",
-        artist: "Artist 4",
-        length: "3:00",
+        title: "Canción infantil de la Lluvia Para Niños y Bebés",
+        artist: "Nene León, cancion infantiles",
+        length: "1:53",
         score: 85,
-        path: "",
+        path: "/cancioninfantil", //Placeholder path
       },
       {
         title: "Humpty Dumpty",
-        artist: "Artist 5",
-        length: "2:50",
+        artist: "The Countdown Kids",
+        length: "1:35",
         score: 90,
-        path: "",
+        path: "", //Placeholder path
       },
     ],
     medium: [
