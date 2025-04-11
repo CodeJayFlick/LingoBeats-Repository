@@ -175,8 +175,8 @@ async function loginUser(username, password) {
     throw error; // Re-throw for route handling
   }
 }
-
 module.exports = {
   registerUser,
-  loginUser
+  loginUser,
+  updateQuizScore  // Add this
 };

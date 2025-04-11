@@ -1,28 +1,116 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { API_BASE_URL } from "../config";
 
 export default function Dashboard() {
-  // State for dropdown visibility and user data
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [user, setUser] = useState({
     isGuest: true,
     username: "",
   });
+  const [userScores, setUserScores] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Check if user is logged in on component mount
+  // Check auth status and fetch scores
   useEffect(() => {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('username');
+    console.log("Auth check - Token:", token, "Username:", username); // Add this line
+
     
     if (token && username) {
-      setUser({
-        isGuest: false,
-        username: username
-      });
+      setUser({ isGuest: false, username });
+      fetchUserScores(token);
+    } else {
+      setLoading(false);
     }
   }, []);
 
-  // Handle logout
+  const fetchUserScores = async (token) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/auth/user/scores`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const data = await response.json();
+      console.log("API Response:", data); // Add this line
+      setUserScores(data);
+    } catch (error) {
+      console.error("Error fetching scores:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const calculateSongAverage = (songTitle) => {
+    if (user.isGuest || !userScores) return '-';
+    
+    const quiz = userScores.find(q => q.name === songTitle);
+    if (!quiz || !quiz.scores || quiz.scores.length === 0) return '-';
+    
+    const sum = quiz.scores.reduce((acc, score) => acc + score, 0);
+    const average = sum / quiz.scores.length;
+  
+    // Calculate percentage
+    const percentage = (average / 10) * 100;
+    return Math.round(percentage);  // Return percentage rounded to nearest integer
+  };
+  const calculateCategoryAverage = (songs) => {
+    if (user.isGuest || !userScores) return '-';
+    
+    let total = 0;
+    let count = 0;
+    
+    songs.forEach(song => {
+      const avg = calculateSongAverage(song.title);
+      if (avg !== '-' && !isNaN(avg)) {
+        total += avg;
+        count++;
+      }
+    });
+    
+    // Calculate percentage for category
+    return count > 0 ? Math.round(total / count) : '-';
+  };
+  
+  
+  // Song lists data (without hardcoded scores)
+  const songLists = {
+    easy: [
+      { title: "Caballito Blanco", artist: "Joel Valle", length: "1:14", path: "/caballito_blanco.mp4" },
+      { title: "Tingalayo", artist: "Daria", length: "2:16", path: "/tingalayo.mp4" },
+      { title: "Cancion infantil de la lluvia para ninos y bebes", artist: "Various", length: "1:45", path: "/lluvia.mp4" },
+      { title: "Humpty Dumpty", artist: "Traditional", length: "1:10", path: "/humpty.mp4" },
+      { title: "Un Elefante Se Balanceaba", artist: "Traditional", length: "1:30", path: "/elefante.mp4" }
+    ],
+    medium: [
+      { title: "De Colores", artist: "Traditional", length: "2:30", path: "/decolores.mp4" },
+      { title: "El Barquito Chiquitito", artist: "Traditional", length: "1:55", path: "/barquito.mp4" },
+      { title: "La Gallina Turuleca", artist: "Traditional", length: "2:15", path: "/gallina.mp4" },
+      { title: "Mambru Se Fue A La Guerra", artist: "Traditional", length: "2:45", path: "/mambru.mp4" },
+      { title: "Mi Burrito Sabanero", artist: "Traditional", length: "3:05", path: "/burrito.mp4" }
+    ],
+    hard: [
+      { title: "A La Loco", artist: "Mila Egred", length: "2:31", path: "/a_la_loco.mp4" },
+      { title: "Vuela Libre", artist: "Javier De Lucas", length: "3:20", path: "/vuela_libre.mp4" },
+      { title: "Enloquecer", artist: "Various", length: "3:45", path: "/enloquecer.mp4" },
+      { title: "Mamacita", artist: "Mike Leite", length: "3:14", path: "/mamacita.mp4" },
+      { title: "La Mar Estaba Serena", artist: "Traditional", length: "2:50", path: "/mar_serena.mp4" }
+    ]
+  };
+  const getSongScores = (songTitle) => {
+    if (user.isGuest || !userScores) return '-';
+  
+    const quiz = userScores.find(q => q.name === songTitle);
+    if (!quiz || quiz.scores.length === 0) return '-';
+  
+    return quiz.scores.map(score => {
+      return typeof score === 'object' && ('$numberInt' in score || '$numberLong' in score)
+        ? score.$numberInt || score.$numberLong
+        : score;
+    }).join(', ');
+  };
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
@@ -30,137 +118,13 @@ export default function Dashboard() {
       isGuest: true,
       username: ""
     });
-    window.location.reload(); // Refresh to update UI
+    window.location.reload();
   };
 
-  // Song lists data
-  const songLists = {
-    easy: [
-      {
-        title: "Caballito Blanco",
-        artist: "Joel Valle",
-        length: "1:14",
-        score: 95,
-        path: "/caballito_blanco.mp4",
-      },
-      {
-        title: "Tingalayo",
-        artist: "Daria",
-        length: "2:16",
-        score: 88,
-        path: "/tingalayo.mp4",
-      },
-      {
-        title: "Mamacita",
-        artist: "Mike Leite",
-        length: "3:14", 
-        score: 90,
-        path: "/mamacita.mp4",
-      },
-      {
-        title: "Song 4",
-        artist: "Artist 4",
-        length: "3:00",
-        score: 85,
-        path: "",
-      },
-      {
-        title: "Song 5",
-        artist: "Artist 5",
-        length: "2:50",
-        score: 90,
-        path: "",
-      },
-    ],
-    medium: [
-      {
-        title: "A La Loco",
-        artist: "Mila Egred",
-        length: "2:31", 
-        score: 82,
-        path: "/a_la_loco.mp4",
-      },
-      {
-        title: "Song 2",
-        artist: "Artist 2",
-        length: "3:55",
-        score: 76,
-        path: "",
-      },
-      {
-        title: "Song 3",
-        artist: "Artist 3",
-        length: "4:00",
-        score: 80,
-        path: "",
-      },
-      {
-        title: "Song 4",
-        artist: "Artist 4",
-        length: "3:45",
-        score: 78,
-        path: "",
-      },
-      {
-        title: "Song 5",
-        artist: "Artist 5",
-        length: "4:10",
-        score: 85,
-        path: "",
-      },
-    ],
-    hard: [
-      {
-        title: "Vuela Libre",
-        artist: "Javier De Lucas",
-        length: "3:20",
-        score: 65,
-        path: "/vuela_libre.mp4",
-      },
-      {
-        title: "Song 2",
-        artist: "Artist 2",
-        length: "4:45",
-        score: 70,
-        path: "",
-      },
-      {
-        title: "Song 3",
-        artist: "Artist 3",
-        length: "5:30",
-        score: 68,
-        path: "",
-      },
-      {
-        title: "Song 4",
-        artist: "Artist 4",
-        length: "4:55",
-        score: 72,
-        path: "",
-      },
-      {
-        title: "Song 5",
-        artist: "Artist 5",
-        length: "5:20",
-        score: 66,
-        path: "",
-      },
-    ],
-  };
-
-  // Calculate average scores
-  const calculateAvgScore = (songs) => {
-    if (songs.length === 0) return 0;
-    const total = songs.reduce((sum, song) => sum + song.score, 0);
-    return Math.round(total / songs.length);
-  };
-
-  // Toggle dropdown
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!event.target.closest('.user-dropdown')) {
@@ -173,6 +137,10 @@ export default function Dashboard() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  if (loading) {
+    return <div className="min-h-screen bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center text-white">Loading...</div>;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-500 to-indigo-600 p-8">
@@ -194,7 +162,6 @@ export default function Dashboard() {
               {user.username.charAt(0).toUpperCase()}
             </button>
             
-            {/* Dropdown Menu */}
             {isDropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-10">
                 <Link
@@ -216,74 +183,40 @@ export default function Dashboard() {
         )}
       </div>
 
-      {/* Main Dashboard Content */}
       <div className="max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold text-white text-center mb-8">
-  {user.isGuest ? "Guest's Dashboard" : `${user.username}'s Dashboard`}
-      </h1>
+        <h1 className="text-3xl font-bold text-white text-center mb-8">
+          {user.isGuest ? "Guest's Dashboard" : `${user.username}'s Dashboard`}
+        </h1>
 
-        {/* Song Lists */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Easy List */}
-          <div>
-            <h2 className="text-2xl font-bold text-white mb-4">
-              Easy{" "}
-              <span className="text-lg">
-                Avg. Score: {calculateAvgScore(songLists.easy)}%
-              </span>
-            </h2>
-            <div className="space-y-4">
-              {songLists.easy.map((song, index) => (
-                <SongCard key={index} song={song} />
-              ))}
+          {['easy', 'medium', 'hard'].map(difficulty => (
+            <div key={difficulty}>
+              <h2 className="text-2xl font-bold text-white mb-4 capitalize">
+                {difficulty}{" "}
+                <span className="text-lg">
+                  Avg. Score: {calculateCategoryAverage(songLists[difficulty])}%
+                </span>
+              </h2>
+              <div className="space-y-4">
+                {songLists[difficulty].map(song => (
+                  <SongCard 
+                    key={song.title} 
+                    song={song} 
+                    score={calculateSongAverage(song.title)}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-
-          {/* Medium List */}
-          <div>
-            <h2 className="text-2xl font-bold text-white mb-4">
-              Medium{" "}
-              <span className="text-lg">
-                Avg. Score: {calculateAvgScore(songLists.medium)}%
-              </span>
-            </h2>
-            <div className="space-y-4">
-              {songLists.medium.map((song, index) => (
-                <SongCard key={index} song={song} />
-              ))}
-            </div>
-          </div>
-
-          {/* Hard List */}
-          <div>
-            <h2 className="text-2xl font-bold text-white mb-4">
-              Hard{" "}
-              <span className="text-lg">
-                Avg. Score: {calculateAvgScore(songLists.hard)}%
-              </span>
-            </h2>
-            <div className="space-y-4">
-              {songLists.hard.map((song, index) => (
-                <SongCard key={index} song={song} />
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
   );
 }
 
-// Song Card Component
-function SongCard({ song }) {
-  const isCompleted = song.score >= 90;
-
+function SongCard({ song, score }) {
   return (
-    <div
-      className={`p-4 rounded-lg shadow-lg ${
-        isCompleted ? "bg-green-100" : "bg-gray-100"
-      }`}
-    >
+    <div className={`p-4 rounded-lg shadow-lg ${score === '-' ? 'bg-gray-100' : score >= 90 ? 'bg-green-100' : 'bg-gray-100'}`}>
       <Link
         to="/musicplayer"
         state={song}
@@ -293,7 +226,7 @@ function SongCard({ song }) {
       </Link>
       <p className="text-sm italic text-gray-600">{song.artist}</p>
       <p className="text-sm text-gray-600">{song.length}</p>
-      <p className="text-sm text-gray-600">Score: {song.score}%</p>
+      <p className="text-sm text-gray-600">Score: {score}%</p>
       <Link to="/quiz" state={song}>
         <button className="mt-2 w-full bg-blue-500 text-white py-1 rounded-lg hover:bg-blue-600 transition">
           Take Quiz
