@@ -15,17 +15,20 @@ Audio File: ../Franecki_LingoBeats_Music/Un Elefante Se Balanceaba - Spanish Nur
 Video File: ?dummy:23.976000:40000:1280:720:216:216:216:
 Video AR Value: 1.777778
 Video Zoom Percent: 1.000000
-Active Line: 4
-Video Position: 1771
+Active Line: 7
+Video Position: 1439
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Default,Arial,48,&H00FFFFFF,&H4FFFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
+Style: Default,Arial,40,&H00FFFFFF,&H4FFFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,0:00:00.00,0:00:09.16,Default,,0,0,0,, {\pos(640, 520)}"Un Elefante Se Balanceaba"\N"One Elephant Balanced on a Spider's Web"\N\NRecording: Appuseries\NMelody: \NLyrics: \NImage Designed By brgfx / Freepik
+Dialogue: 0,0:00:00.00,0:00:09.16,Default,,0,0,0,,{\pos(632,484)} {\pos(640,520)}"Un Elefante Se Balanceaba"\N"One Elephant was Balancing"\N\NRecording: Appuseries \NImage Designed By: kjpargeter / Freepik
 Dialogue: 0,0:00:09.90,0:02:12.00,Default,,0,0,0,,{\k210}{\an5\pos(640,360)\p1\c&HFFFFFF&}m 0 0 l 5 0 l 5 650 l 0 650\N
-Dialogue: 0,0:00:09.90,0:01:13.86,Default,,0,0,0,,{\k38}{\pos(318,602.555)}Un{\k78} elephante{\k23}\Nse balanceaba sobre {\k129}\Nla tela de un araña,{\k198} {\k46}como veía {\k114} \Nque resistía,{\k76} {\k102}fue a {\k32}llamar {\k30}\Na otro{\k31} {\k57}elephante. {\k14} {\k12}{\k12}\NDos{\k30} {\k140}elephantes {\k1028}se balanceaban{\k50}\Nsobre {\k90}la tela de una araña {\k110}{\k126}\Ncomo {\k36}veían{\k48}que {\k136}resistía,{\k92}\Nfueron{\k40}me {\k36}a llama {\k140}{\k88}\Na otro elephante.{\k188}{\k92}\N {\k64}{\k2642}{\k228}
-Dialogue: 0,0:00:09.90,0:01:13.86,Default,,0,0,0,,{\k42}{\pos(967,604.555)}{\pos(318,602.555)}One{\k68} elephant{\k30}\Nbalanced on{\k130} \Na spider's web,{\k200} {\k40}As he saw {\k114}\Nthat he was resisting,{\k74} {\k108}he went\Nto call{\k38} {\k50}another {\k74}elephant {\k10}\NTwo{\k26} {\k90}elephants {\k842}balanced {\k166}{\k50}\Non {\k90}a spider's web {\k110}{\k126}\NAs they saw that he was resisting, {\k36} {\k48} {\k136}{\k92}\Nthey went {\k40}to call {\k36} {\k140}{\k88}\Nanother {\k188}elephant.{\k92}\N {\k64} {\k2642}{\k316}
-Dialogue: 0,0:01:13.86,0:01:16.86,Default,,0,0,0,,
+Dialogue: 0,0:00:09.90,0:00:32.86,Default,,0,0,0,,{\k38}{\pos(318,602.555)}Un{\k78} elephante{\k23}\Nse balanceaba sobre {\k129}\Nla tela de un araña,{\k198} {\k46}como veía {\k114} \Nque resistía,{\k76} {\k102}fue a {\k32}llamar {\k30}\Na otro{\k31} {\k57}elephante. {\k14} {\k12}{\k6}\NDos{\k36} {\k48}elephantes {\k134}se balanceaban{\k32}\Nsobre{\k34} {\k156}la tela de una araña {\k22}{\k29}\Ncomo{\k17} {\k92}veían {\k60}que {\k42}resistía,{\k34}\Nfueron{\k2} {\k40}me {\k40}a llama {\k16}{\k58}\Na otro{\k80} elephante.{\k1504}\N {\k64}{\k2642}{\k228}{\k0}
+Dialogue: 0,0:00:32.86,0:01:00.00,Default,,0,0,0,,{\k376}{\pos(320,648)}\NTres{\k38} {\k84}elephantes {\k30}se balanceaban{\k70}\Nsobre{\k18} {\k58}la tela de una araña {\k40}{\k90}\Ncomo{\k62} {\k72}veían {\k56}que {\k60}resistía,{\k36}\Nfueron{\k42} {\k48}me {\k28}a llama {\k18}{\k14}\Na otro{\k78} elephante.{\k20}\N {\k28} \NCuatro{\k46} {\k50}elephantes {\k78}se balanceaban{\k40}\Nsobre{\k42} {\k102}la tela de una araña {\k46}{\k58}\Ncomo{\k46} {\k70}veían {\k60}que {\k60}resistía,{\k30}\Nfueron{\k22} {\k36}me {\k20}a llama {\k12}{\k18}\Na otro{\k130} elephante.{\k290}\N {\k92}
+Dialogue: 0,0:01:00.00,0:01:18.00,Default,,0,0,0,,{\k284}{\pos(316,532)}\NCinco{\k60} {\k58}elephantes {\k84}se balanceaban{\k72}\Nsobre{\k50} {\k72}la tela de una araña {\k48}{\k52}\Ncomo{\k56} {\k52}veían {\k42}que {\k48}resistía,{\k42}\Nfueron{\k46} {\k32}me {\k20}a llama {\k16}{\k18}\Na otro{\k110} elephante.{\k1214}\N {\k64}{\k2642}{\k228}{\k890}
+Dialogue: 0,0:00:09.90,0:00:32.86,Default,,0,0,0,,{\k42}{\pos(967,604.555)}{\pos(318,602.555)}One{\k68} elephant{\k30}\Nbalanced on{\k130} \Na spider's web,{\k200} {\k40}As he saw {\k114}\Nthat he was resisting,{\k74} {\k108}he went\Nto call{\k38} {\k50}another {\k74}elephant {\k16}\NTwo{\k38} {\k52}elephants {\k146}balanced {\k10}{\k6}\Non{\k28} {\k142}a spider's web {\k50}{\k14}\NAs they saw{\k116} {\k82}that he was resisting,{\k38} {\k18}\Nthey went{\k20} {\k34}to call {\k44} {\k34}{\k34}\Nanother {\k38}elephant.{\k830}\N {\k84} {\k3238}{\k316}
+Dialogue: 0,0:00:32.86,0:01:00.00,Default,,0,0,0,,{\k376}{\pos(963,654.555)}{\pos(967,604.555)}{\pos(318,602.555)}\NThree{\k30} {\k84}elephants {\k38}balanced {\k18}{\k22}\Non{\k46} {\k48}a spider's web {\k46}{\k126}\NAs they saw{\k108} {\k44}that he was resisting, {\k74}\Nthey went{\k72} to call {\k80} \Nanother {\k64}elephant.{\k48}\N {\k18} {\k36}\NFour{\k26} {\k42}elephants {\k96}balanced {\k46}\Non{\k22} {\k72}a spider's web{\k158} \NAs they saw{\k72} {\k42}that he was resisting,{\k28} {\k90}\Nthey went{\k68} {\k30}to call {\k36} {\k14}\Nanother {\k494}elephant.{\k0}\N {\k0}
+Dialogue: 0,0:01:00.00,0:01:18.00,Default,,0,0,0,,{\k294}{\pos(963,530.555)}{\pos(967,604.555)}{\pos(318,602.555)}\NFive{\k70} {\k46}elephants {\k124}balanced {\k34}{\k20}\Non{\k36} {\k146}a spider's web {\k18}{\k24}\NAs they saw{\k104} {\k48}that he was resisting, {\k40}\Nthey went{\k40} {\k24}to call {\k74} \Nanother {\k28}elephant.{\k20}\N {\k26} {\k5084}
