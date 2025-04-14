@@ -20,7 +20,7 @@ const Quiz = () => {
       try {
         setLoading(true);
         setError(null);
-        
+
         if (!song.title) {
           setQuizData([]);
           setLoading(false);
@@ -30,13 +30,13 @@ const Quiz = () => {
         const response = await fetch(
           `${API_BASE_URL}/auth/quiz/${encodeURIComponent(song.title)}`
         );
-        
+
         if (!response.ok) {
-          throw new Error('Failed to fetch quiz data');
+          throw new Error("Failed to fetch quiz data");
         }
 
         const data = await response.json();
-        
+
         if (data && data.quiz) {
           setQuizData(data.quiz);
         } else {
@@ -65,28 +65,30 @@ const Quiz = () => {
         correctAnswers++;
       }
     });
-    const percentageScore = Math.round((correctAnswers / quizData.length) * 100);
+    const percentageScore = Math.round(
+      (correctAnswers / quizData.length) * 100
+    );
     setScore(percentageScore);
     setPastScores((prev) => [...prev, percentageScore]);
 
     // Save score to backend if user is logged in
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       if (token) {
         const response = await fetch(`${API_BASE_URL}/auth/quiz/update-score`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
             quizName: song.title,
-            newScore: percentageScore
-          })
+            newScore: percentageScore,
+          }),
         });
 
         if (!response.ok) {
-          throw new Error('Failed to save score');
+          throw new Error("Failed to save score");
         }
       }
     } catch (err) {
@@ -113,7 +115,8 @@ const Quiz = () => {
       {/* Main Quiz Content */}
       <div className="max-w-6xl mx-auto text-white">
         <h1 className="text-3xl font-bold text-center mb-8">
-          Quiz for "{song.title || "Unknown Song"}" by {song.artist || "Unknown Artist"}
+          Quiz for "{song.title || "Unknown Song"}" by{" "}
+          {song.artist || "Unknown Artist"}
         </h1>
 
         {loading ? (
@@ -162,7 +165,8 @@ const Quiz = () => {
         {score !== null && (
           <div className="mt-6">
             <h2 className="text-2xl font-bold">
-              Your score: {score}% {score >= passingScore ? "(Passed)" : "(Failed)"}
+              Your score: {score}%{" "}
+              {score >= passingScore ? "(Passed)" : "(Failed)"}
             </h2>
             {(score < passingScore || score < 100) && (
               <button
