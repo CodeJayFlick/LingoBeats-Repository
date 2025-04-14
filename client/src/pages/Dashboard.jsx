@@ -20,9 +20,9 @@ export default function Dashboard() {
       {
         title: "Un Elephante Se Balanceaba",
         artist: "Appuseries",
-        length: "2:44", 
+        length: "2:44",
         score: 90,
-        path: "/un_elephante.mp4", // Placeholder path
+        path: "/un_elephante_se_balanceaba.mp4", // Completed
       },
       {
         title: "Canción infantil de la Lluvia Para Niños y Bebés",
@@ -43,7 +43,7 @@ export default function Dashboard() {
       {
         title: "A La Loco",
         artist: "Mila Egred",
-        length: "2:31", 
+        length: "2:31",
         score: 82,
         path: "/a_la_loco.mp4", //Placeholder Path
       },
@@ -108,7 +108,7 @@ export default function Dashboard() {
       {
         title: "Mamacita",
         artist: "Mike Leite",
-        length: "3:14", 
+        length: "3:14",
         score: 90,
         path: "/mamacita.mp4", // Placeholder path
       },
