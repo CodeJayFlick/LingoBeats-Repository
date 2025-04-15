@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from pymongo import MongoClient
 from deep_translator import GoogleTranslator
 
-# Each phrase in the lyrics need to be seperated with ";".
+# Each phrase in the lyrics need to be seperated with "\n".
 # The script will automatically generate fill in the
 # blank questions for each phrase. The script will also take
 # random words and create translation questions. The amount
@@ -32,10 +32,10 @@ def generate_fill_in_the_blank_questions(file_name, num_options=4):
     with open(file_path, 'r', encoding='utf-8') as file:
         lyrics = file.read()
 
-    phrases = [phrase.strip()
-               for phrase in lyrics.split(';') if phrase.strip()]
+    phrases = list(set(phrase.strip()
+                       for phrase in lyrics.splitlines() if phrase.strip()))
     all_words = list(set(clean_word(w)
-                     for w in lyrics.replace(';', ' ').split() if w))
+                         for w in lyrics.split() if w))
     questions = []
 
     for phrase in phrases:
@@ -102,8 +102,8 @@ def generate_translation_questions(file_name, num_questions=10, num_options=4):
 
 
 if __name__ == "__main__":
-    file_name = "lyrics.txt"
-    song_name = "Caballito Blanco"
+    file_name = "gallina.txt"
+    song_name = "La Gallina Turleca"
 
     load_dotenv()
 
