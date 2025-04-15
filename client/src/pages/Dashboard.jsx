@@ -96,13 +96,13 @@ export default function Dashboard() {
         title: "Humpty Dumpty",
         artist: "Traditional",
         length: "1:10",
-        path: "/humpty.mp4",
+        path: "/humpty_dumpty.mp4",
       },
       {
         title: "Un Elefante Se Balanceaba",
         artist: "Traditional",
         length: "1:30",
-        path: "/elefante.mp4",
+        path: "/un_elephante_se_balanceaba.mp4",
       },
     ],
     medium: [
@@ -306,4 +306,3 @@ function SongCard({ song, score }) {
     </div>
   );
 }
-
