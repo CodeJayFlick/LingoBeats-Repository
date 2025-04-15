@@ -306,3 +306,4 @@ function SongCard({ song, score }) {
     </div>
   );
 }
+
