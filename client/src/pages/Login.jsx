@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { API_BASE_URL } from "../config";
 
 export default function Login() {
@@ -7,35 +7,34 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
-    
+
     try {
       const response = await fetch(`${API_BASE_URL}/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
       });
 
       const data = await response.json();
-      
+
       if (response.ok) {
         // Store authentication data
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('username', data.username);
-        
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.username);
+
         // Redirect to dashboard - using window.location to ensure full state reset
-        window.location.href = '/dashboard';
+        window.location.href = "/dashboard";
       } else {
-        throw new Error(data.error || 'Login failed. Please try again.');
+        throw new Error(data.error || "Login failed. Please try again.");
       }
     } catch (err) {
       setError(err.message);
-      console.error('Login error:', err);
+      console.error("Login error:", err);
     } finally {
       setIsLoading(false);
     }
@@ -76,10 +75,10 @@ export default function Login() {
             type="submit"
             disabled={isLoading}
             className={`w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition ${
-              isLoading ? 'opacity-50 cursor-not-allowed' : ''
+              isLoading ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
-            {isLoading ? 'Logging in...' : 'Login'}
+            {isLoading ? "Logging in..." : "Login"}
           </button>
         </form>
         <div className="text-center mt-4">

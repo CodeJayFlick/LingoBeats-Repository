@@ -170,21 +170,6 @@ export default function Dashboard() {
       },
     ],
   };
-  const getSongScores = (songTitle) => {
-    if (user.isGuest || !userScores) return "-";
-
-    const quiz = userScores.find((q) => q.name === songTitle);
-    if (!quiz || quiz.scores.length === 0) return "-";
-
-    return quiz.scores
-      .map((score) => {
-        return typeof score === "object" &&
-          ("$numberInt" in score || "$numberLong" in score)
-          ? score.$numberInt || score.$numberLong
-          : score;
-      })
-      .join(", ");
-  };
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
