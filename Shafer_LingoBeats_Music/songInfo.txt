@@ -1,0 +1,31 @@
+Song Information
+
+De Colores
+https://www.youtube.com/watch?v=48vNfKUHWRw
+
+El Barquito Chiquitito
+https://www.youtube.com/watch?v=cpefXJXrH3s
+
+title: "Cancion infantil de la lluvia para ninos y bebes",
+        artist: "Various",
+        length: "1:45",
+        path: "/lluvia.mp4",
+https://www.youtube.com/watch?v=jIE8DUQ8cZU
+
+Mi Burrito Sabanero
+https://www.youtube.com/watch?v=zqyJ0mSSsR8
+
+Mambrú Se Fue A La Guerra
+https://www.youtube.com/watch?v=TyXOM6_tJ4U
+
+La Mar Estaba Serena
+https://www.youtube.com/watch?v=NfJHrkIXEGU
+
+La Gallina Turuleca
+https://www.youtube.com/watch?v=XQaKFU3Fh_M
+
+Enloquecer
+https://www.youtube.com/watch?v=YAKNc8tZuwg
+
+Mamacita
+https://www.youtube.com/watch?v=FS9t5_YBg4M
