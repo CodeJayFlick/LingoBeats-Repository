@@ -36,7 +36,7 @@ export default function Dashboard() {
         artist: "The Countdown Kids",
         length: "1:35",
         score: 90,
-        path: "", //Placeholder path
+        path: "humpty_dumpty.mp4", //Completed
       },
     ],
     medium: [
