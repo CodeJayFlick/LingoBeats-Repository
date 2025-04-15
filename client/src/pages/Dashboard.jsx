@@ -87,7 +87,7 @@ export default function Dashboard() {
         path: "/tingalayo.mp4",
       },
       {
-        title: "Cancion infantil de la lluvia para ninos y bebes",
+        title: "Lluvia - Lluvia - Canciones Infantiles",
         artist: "Various",
         length: "1:45",
         path: "/lluvia.mp4",
