@@ -10,6 +10,17 @@ async function registerUser(username, password) {
       throw new Error("Username and password are required");
     }
 
+    // Password Validation from Cody Franecki
+    // A password must contain at least 8 characters, 
+    // including at least one uppercase letter, one lowercase letter, 
+    // one number, and one special character.
+    const password_Regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!password_Regex.test(password)) {
+      throw new Error(
+        "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one number, and one special character."
+      )
+    }
+
     const db = await connectToDB();
     const usersCollection = db.collection("users");
     const quizTemplate = [
