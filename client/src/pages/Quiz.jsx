@@ -192,12 +192,12 @@ const Quiz = () => {
         {score !== null && (
           <div className="mt-10 text-center">
             <div className="flex items-center justify-center gap-6">
-              <div classname="w-10 h-10">
+              <div className="w-20 h-20">
                 <CircularProgressbar
                   value={score}
                   text={`${score}%`}
                   styles={buildStyles({
-                    textColor: score >= passingScore ? "#22c55e" : "#ef4444",
+                    textColor: "#fff",
                     pathColor: "#22c55e" , //Soft Green
                     trailColor: "#ef4444", //Red Trail to show incorrect percent
                     textSize: "12x",
