@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { API_BASE_URL } from "../config";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -11,31 +10,33 @@ export default function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch(`/api/auth/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
-  
+
       // Check if response exists and is valid
       if (!response.ok) {
         const errorText = await response.text(); // Read as text first
-        throw new Error(errorText || 'Registration failed (no details)');
+        throw new Error(errorText || "Registration failed (no details)");
       }
-  
+
       const data = await response.json(); // Now safe to parse
-      console.log('Success:', data); // Debug log
-      navigate('/');
+      console.log("Success:", data); // Debug log
+      navigate("/");
     } catch (err) {
       setError(err.message);
-      console.error('Signup error:', err); // Debug log
+      console.error("Signup error:", err); // Debug log
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-500 to-indigo-600">
       <div className="bg-gray-100 p-8 rounded-2xl shadow-lg w-96">
-        <h2 className="text-2xl font-bold text-center mb-4">LingoBeats Signup</h2>
+        <h2 className="text-2xl font-bold text-center mb-4">
+          LingoBeats Signup
+        </h2>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <form onSubmit={handleSignup} className="space-y-4">
           <div>

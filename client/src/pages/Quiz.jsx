@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
-import { API_BASE_URL } from "../config";
 
 const Quiz = () => {
   const location = useLocation();
@@ -27,7 +26,7 @@ const Quiz = () => {
         }
 
         const response = await fetch(
-          `${API_BASE_URL}/auth/quiz/${encodeURIComponent(song.title)}`
+          `/api/auth/quiz/${encodeURIComponent(song.title)}`
         );
 
         if (!response.ok) throw new Error("Failed to fetch quiz data");
@@ -66,7 +65,7 @@ const Quiz = () => {
     try {
       const token = localStorage.getItem("token");
       if (token) {
-        await fetch(`${API_BASE_URL}/auth/quiz/update-score`, {
+        await fetch(`/api/auth/quiz/update-score`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -138,10 +137,7 @@ const Quiz = () => {
 
             <div className="space-y-8">
               {quizData.map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-100 p-4 rounded-xl shadow"
-                >
+                <div key={index} className="bg-gray-100 p-4 rounded-xl shadow">
                   <p className="font-semibold mb-3">{item.question}</p>
                   <div className="space-y-2">
                     {item.options.map((option, optIndex) => (

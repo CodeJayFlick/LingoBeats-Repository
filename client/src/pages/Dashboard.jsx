@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { API_BASE_URL } from "../config";
 
 export default function Dashboard() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -27,7 +26,7 @@ export default function Dashboard() {
 
   const fetchUserScores = async (token) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/user/scores`, {
+      const response = await fetch(`/api/auth/user/scores`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
