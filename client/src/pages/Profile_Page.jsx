@@ -13,6 +13,7 @@
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Default_Profile from "../assets/Default_Profile.png"; // Importing default profile picture
 
 // The main function entering the profile page Profile Page
 function Profile_Page() {
@@ -24,7 +25,7 @@ function Profile_Page() {
         // Fetching JWT token from local storage of user (if it exists)
         const token = localStorage.getItem("token");
         if (!token) return; // If no token, do not fetch data
-            fetch (`{API_BASE_URL}/profile`, {
+            fetch (`${API_BASE_URL}/profile`, {
                 method: "GET",
                 headers: { "Authorization": `Bearer ${token}` },
             })

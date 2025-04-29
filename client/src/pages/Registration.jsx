@@ -7,13 +7,17 @@
 
 // Import packages
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
 
 // For Registration for the user
 const Registration = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
     const [token, setToken] = useState("");
+    const navigate = useNavigate(); // For navigation to other pages
 
 // Requirements set for the password validation
 const Requirements = {
@@ -21,7 +25,7 @@ const Requirements = {
     uppercase: /[A-Z]/.test(password),
     lowercase: /[a-z]/.test(password),
     number: /\d/.test(password),
-    special: /[!@#$%^&*]/.test(password),
+    special: /[A-Za-z\d]/.test(password),
 };
 
 // Checks every rule to see if requirements are met
@@ -33,6 +37,7 @@ const handleSubmit = async (e) => {
     // Logic check for if the user does not meet requirments for the password
     if(!isValid) {
         console.log("[ERROR]: Password does not meet requirements for registration. Try Again.");
+        setError("Password does not meet requirements.");
         return;
     }
     
@@ -45,11 +50,7 @@ const handleSubmit = async (e) => {
         });
 
         const data = await request.json();
-/*
-        if (request.ok) {
-            console.log("{DEBUG] Resgistration successful:", data);
-        }
-*/
+
         if (!request.ok) {
             setError(data.message || "Registration failed. Please try again.");
         }
@@ -67,7 +68,7 @@ const handleSubmit = async (e) => {
 };
 
 return (
-    <div style ={{ maxWidth: "400px", margin: 'auto' }}>
+    <div style ={{ maxWidth: "400px", margin: 'auto', padding: "20px" }}>
         <h2>LingoBeats Registration</h2>
         <form onSubmit ={handleSubmit}>
             <input
@@ -76,33 +77,54 @@ return (
             value={username}
             required
             onChange={(e) => setUsername(e.target.value)}
+            style={{ marginBottom: "10px", width: "100%" }}
             />
+        <div style={{ position: "relative", width: "100%"}}>
             <input
-            type = "password"
-            placeholder="Password"
-            value={password}
-            required
-            onChange={(e) => setPassword(e.target.value)}
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                value={password}
+                required
+                onChange={(e) => setPassword(e.target.value)}
+                style={{ width: "100%", paddingRight: "40px" }}
             />
+            <button
+                type = "button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                style={{ 
+                    position: "absolute",
+                    right: "10px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: 0,
+                }}
+            >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+        </div>
 
-            <ul>
-                <li style={{ color: Requirements.length ? "green" : "red"}}>
-                    {Requirements.length ? "✅" : "❌"} Password must be at least 8 characters long.
-                </li>
-                <li style={{ color: Requirements.uppercase ? "green" : "red"}}>
-                    {Requirements.uppercase ? "✅" : "❌"} Password must contain at least one uppercase letter.
-                </li>
-                <li style={{ color: Requirements.lowercase ? "green" : "red"}}>
-                    {Requirements.lowercase ? "✅" : "❌"} Password must contain at least one lowercase letter.
-                </li>
-                <li style={{ color: Requirements.number ? "green" : "red"}}>
-                    {Requirements.number ? "✅" : "❌"} Password must contain at least one number.
-                </li>
-                <li style={{ color: Requirements.special ? "green" : "red"}}>
-                    {Requirements.special ? "✅" : "❌"} Password must contain at least one special character.
-                </li>
+        <ul style = {{ listStyleType: "none", padding: 0 , marginTop: "10px" }}>
+            <li style={{ color: passwordRequirements.length ? "green" : "red"}}>
+                {passwordRequirements.length ? "✅" : "❌"} Password must be at least 8 characters long.
+            </li>
+            <li style={{ color: passwordRequirements.uppercase ? "green" : "red"}}>
+                {passwordRequirements.uppercase ? "✅" : "❌"} Password must contain at least one uppercase letter.
+            </li>
+            <li style={{ color: passwordRequirements.lowercase ? "green" : "red"}}>
+                {passwordRequirements.lowercase ? "✅" : "❌"} Password must contain at least one lowercase letter.
+            </li>
+            <li style={{ color: passwordRequirements.number ? "green" : "red"}}>
+                {passwordRequirements.number ? "✅" : "❌"} Password must contain at least one number.
+            </li>
+             <li style={{ color: passwordRequirements.special ? "green" : "red"}}>
+                    {passwordRequirements.special ? "✅" : "❌"} Password must contain at least one special character.
+             </li>
             </ul>
-            {error && <p style={{ color: "red" }}>{error}</p>}
+
+            {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
 
             <button type = "submit" disabled={!isValid}>Register</button>
         </form>
