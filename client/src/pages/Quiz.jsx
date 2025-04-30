@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { API_BASE_URL } from "../config";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 const Quiz = () => {
   const location = useLocation();
@@ -182,26 +184,48 @@ const Quiz = () => {
         ) : (
           <p className="text-center">No quiz data available for this song.</p>
         )}
-
+        {/*Author: Will Gallagher:
+           Added Circular Progress Bar to score readout
+           imported from react-circular-progressbar if unable to run do
+           npm install --save react-circular-progressbar
+           also refactored score text to appear to the side of the wheel*/}
         {score !== null && (
           <div className="mt-10 text-center">
-            <h2
-              className={`text-3xl font-bold ${
-                score >= passingScore ? "text-green-600" : "text-red-500"
-              }`}
-            >
-              Your Score: {score}%{" "}
-              {score >= passingScore ? "🎉 You passed!" : "❌ Try again!"}
-            </h2>
+            <div className="flex items-center justify-center gap-6">
+              <div className="w-20 h-20">
+                <CircularProgressbar
+                  value={score}
+                  text={`${score}%`}
+                  styles={buildStyles({
+                    textColor: "#fff",
+                    pathColor: "#22c55e" , //Soft Green
+                    trailColor: "#ef4444", //Red Trail to show incorrect percent
+                    textSize: "12x",
+                    strokeLinecap: "round",
+                  })}
+                />
+              </div>
 
-            {(score < passingScore || score < 100) && (
-              <button
-                onClick={handleRetake}
-                className="mt-4 bg-yellow-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-yellow-600 transition"
-              >
-                🔁 Retake Quiz
-              </button>
-            )}
+              <div classname="text-left">
+                <h2
+                  className={`text-2xl font-bold ${
+                    score >= passingScore ? "text-green-400" : "text-red-400"
+                  }`}
+                >
+                  Your Score: {score}%{" "}
+                  {score >= passingScore ? "🎉 You passed!" : "❌ Try again!"}
+                </h2>
+
+                {(score < passingScore || score < 100) && (
+                  <button
+                    onClick={handleRetake}
+                    className="mt-4 bg-yellow-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-yellow-600 transition"
+                  >
+                    🔁 Retake Quiz
+                  </button>
+                )}
+              </div>
+            </div>
 
             {pastScores.length > 1 && (
               <div className="mt-6 text-left">
