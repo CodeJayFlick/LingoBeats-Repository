@@ -32,12 +32,12 @@ export default function Dashboard() {
         },
       });
       const data = await response.json();
-      console.log("API Response:", data); // Add this line
+      if (data.error) {
+        handleLogout();
+      }
       setUserScores(data);
     } catch (error) {
-      if (user.isGuest) {
-        window.location.href = "/";
-      }
+      handleLogout();
       console.error("Error fetching scores:", error);
     } finally {
       setLoading(false);
@@ -173,6 +173,7 @@ export default function Dashboard() {
     ],
   };
   const handleLogout = () => {
+    console.log("Logging Out");
     localStorage.removeItem("token");
     localStorage.removeItem("username");
     setUser({

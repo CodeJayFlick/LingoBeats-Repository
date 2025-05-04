@@ -40,10 +40,11 @@ def generate_fill_in_the_blank_questions(file_name, num_options=4):
 
     for phrase in phrases:
         words = [clean_word(w) for w in phrase.split()]
-        if len(words) > 3:
-            missing_word = random.choice(words)
-            blank_phrase = phrase.replace(
-                missing_word, '_' * len(missing_word), 1)
+        if len(words) > 1:
+            missing_word = random.choice(
+                [word for word in words if len(word) >= 3])
+            blank_phrase = phrase.lower().replace(
+                missing_word.lower(), '_' * len(missing_word), 1)
 
             # Generate multiple-choice options
             options = [missing_word] + random.sample(
@@ -104,8 +105,8 @@ def generate_translation_questions(file_name, num_questions=10, num_options=4):
 
 
 if __name__ == "__main__":
-    file_name = "loco.txt"
-    song_name = "A La Loco"
+    file_name = "guerra.txt"
+    song_name = "Mambrú Se Fue A La Guerra"
 
     load_dotenv()
 
