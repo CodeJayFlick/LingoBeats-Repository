@@ -104,8 +104,8 @@ def generate_translation_questions(file_name, num_questions=10, num_options=4):
 
 
 if __name__ == "__main__":
-    file_name = "mamacita.txt"
-    song_name = "Mamacita"
+    file_name = "loco.txt"
+    song_name = "A La Loco"
 
     load_dotenv()
 
