@@ -153,7 +153,7 @@ export default function Dashboard() {
         path: "/vuela_libre.mp4",
       },
       {
-        title: "Enloquecer",
+        title: "Enlouquecer",
         artist: "Various",
         length: "3:45",
         path: "/enlouquecer.mp4",
