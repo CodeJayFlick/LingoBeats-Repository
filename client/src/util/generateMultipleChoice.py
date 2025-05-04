@@ -40,7 +40,7 @@ def generate_fill_in_the_blank_questions(file_name, num_options=4):
 
     for phrase in phrases:
         words = [clean_word(w) for w in phrase.split()]
-        if len(words) > 1:
+        if len(words) > 3:
             missing_word = random.choice(words)
             blank_phrase = phrase.replace(
                 missing_word, '_' * len(missing_word), 1)
@@ -104,8 +104,8 @@ def generate_translation_questions(file_name, num_questions=10, num_options=4):
 
 
 if __name__ == "__main__":
-    file_name = "barquito.txt"
-    song_name = "El Barquito Chiquitito"
+    file_name = "mamacita.txt"
+    song_name = "Mamacita"
 
     load_dotenv()
 
