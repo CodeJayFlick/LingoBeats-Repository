@@ -156,7 +156,7 @@ export default function Dashboard() {
         title: "Enloquecer",
         artist: "Various",
         length: "3:45",
-        path: "/enloquecer.mp4",
+        path: "/enlouquecer.mp4",
       },
       {
         title: "Mamacita",
