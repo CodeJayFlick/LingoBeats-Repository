@@ -36,7 +36,9 @@ export default function Dashboard() {
       console.log("API Response:", data); // Add this line
       setUserScores(data);
     } catch (error) {
-      window.location.href = "/";
+      if (user.isGuest) {
+        window.location.href = "/";
+      }
       console.error("Error fetching scores:", error);
     } finally {
       setLoading(false);
