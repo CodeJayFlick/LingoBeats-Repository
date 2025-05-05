@@ -166,10 +166,10 @@ export default function Dashboard() {
         path: "/Mamacita.mp4",
       },
       {
-        title: "La Mar Estaba Serena",
-        artist: "Traditional",
-        length: "2:50",
-        path: "/mar_serena.mp4",
+        title: "Tengo Una Muñeca Vestida de Azúl",
+        artist: "Toycantado",
+        length: "1:06",
+        path: "/tengo_una_muneca_vestida_de_azul.mp4",
       },
     ],
   };
