@@ -149,8 +149,8 @@ export default function Dashboard() {
       },
       {
         title: "Vuela Libre",
-        artist: "Javier De Lucas",
-        length: "3:20",
+        artist: "Jerry Rivera",
+        length: "4:47",
         path: "/vuela_libre.mp4",
       },
       {
