@@ -68,7 +68,9 @@ def generate_translation_questions(file_name, num_questions=10, num_options=4):
 
     words = list(set(clean_word(w)
                  for w in lyrics.replace(';', ' ').split() if w))
-    selected_words = random.sample(words, min(num_questions, len(words)))
+    filtered_words = [w for w in words if len(w) >= 3]
+    selected_words = random.sample(
+        filtered_words, min(num_questions, len(words)))
 
     translator = GoogleTranslator(source="es", target="en")
     translations = {}

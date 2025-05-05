@@ -36,6 +36,9 @@ export default function Dashboard() {
       console.log("API Response:", data); // Add this line
       setUserScores(data);
     } catch (error) {
+      if (user.isGuest) {
+        window.location.href = "/";
+      }
       console.error("Error fetching scores:", error);
     } finally {
       setLoading(false);
@@ -146,8 +149,8 @@ export default function Dashboard() {
       },
       {
         title: "Vuela Libre",
-        artist: "Javier De Lucas",
-        length: "3:20",
+        artist: "Jerry Rivera",
+        length: "4:47",
         path: "/vuela_libre.mp4",
       },
       {
