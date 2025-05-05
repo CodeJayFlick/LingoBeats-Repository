@@ -90,7 +90,7 @@ export default function Dashboard() {
         title: "Lluvia - Lluvia - Canciones Infantiles",
         artist: "Various",
         length: "1:45",
-        path: "/lluvia.mp4",
+        path: "/Canción_infantil_de_la_lluvia_para_niños_y_bebés.mp4",
       },
       {
         title: "Humpty Dumpty",
@@ -134,7 +134,7 @@ export default function Dashboard() {
         title: "Mi Burrito Sabanero",
         artist: "Traditional",
         length: "3:05",
-        path: "/burrito.mp4",
+        path: "/Mi_Burrito_Sabanero.mp4",
       },
     ],
     hard: [
@@ -160,7 +160,7 @@ export default function Dashboard() {
         title: "Mamacita",
         artist: "Mike Leite",
         length: "3:14",
-        path: "/mamacita.mp4",
+        path: "/Mamacita.mp4",
       },
       {
         title: "La Mar Estaba Serena",

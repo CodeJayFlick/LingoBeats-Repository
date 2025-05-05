@@ -11,13 +11,15 @@
 import React, {useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { API_BASE_URL } from "../config"; // Importing the API base URL
+
 // Main function for the Score Page
-function Score_Page() {
+function Scores() {
+    const navigate = useNavigate(); // For navigation to other pages
     const [quizzes, setQuizzes] = useState([]);
     const [error, setError] = useState('');
     const [averageScores, setAverageScores] = useState({});
     const [highestScores, setHighestScores] = useState({});
-    const navigate = useNavigate();
     const token = localStorage.getItem("token");
 
     useEffect(() => {
@@ -69,4 +71,4 @@ function Score_Page() {
     );
 }
 
-export default Score_Page;
+export default Scores;
