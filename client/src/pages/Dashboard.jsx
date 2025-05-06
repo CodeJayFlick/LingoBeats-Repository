@@ -154,10 +154,10 @@ export default function Dashboard() {
         path: "/vuela_libre.mp4",
       },
       {
-        title: "Enloquecer",
+        title: "Enlouquecer",
         artist: "Mike Leite",
         length: "3:08",
-        path: "/enloquecer.mp4",
+        path: "/enlouquecer.mp4",
       },
       {
         title: "Mamacita",
