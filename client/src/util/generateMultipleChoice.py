@@ -105,8 +105,8 @@ def generate_translation_questions(file_name, num_questions=10, num_options=4):
 
 
 if __name__ == "__main__":
-    file_name = "guerra.txt"
-    song_name = "Mambrú Se Fue A La Guerra"
+    file_name = "azul.txt"
+    song_name = "Tengo una Muñeca Vestida de Azul"
 
     load_dotenv()
 
