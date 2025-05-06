@@ -101,11 +101,12 @@ export default function Dashboard() {
         length: "1:10",
         path: "/humpty_dumpty.mp4",
       },
+  
       {
-        title: "Un Elefante Se Balanceaba",
-        artist: "Traditional",
-        length: "1:30",
-        path: "/un_elephante_se_balanceaba.mp4",
+        title: "Tengo Una Muñeca Vestida de Azúl",
+        artist: "Toycantado",
+        length: "1:06",
+        path: "/tengo_una_muneca_vestida_de_azul.mp4",
       },
     ],
     medium: [
@@ -166,11 +167,12 @@ export default function Dashboard() {
         path: "/Mamacita.mp4",
       },
       {
-        title: "Tengo Una Muñeca Vestida de Azúl",
-        artist: "Toycantado",
-        length: "1:06",
-        path: "/tengo_una_muneca_vestida_de_azul.mp4",
+        title: "Un Elefante Se Balanceaba",
+        artist: "Traditional",
+        length: "1:30",
+        path: "/un_elephante_se_balanceaba.mp4",
       },
+ 
     ],
   };
   const handleLogout = () => {
