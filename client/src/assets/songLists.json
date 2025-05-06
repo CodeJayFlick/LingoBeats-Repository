@@ -1,98 +1,99 @@
 {
     "easy": [
-        {
-            "title": "Caballito Blanco",
-            "artist": "Joel Valle",
-            "length": "1:14",
-            "path": "/caballito_blanco.mp4"
-        },
-        {
-            "title": "Tingalayo",
-            "artist": "Daria",
-            "length": "2:16",
-            "path": "/tingalayo.mp4"
-        },
-        {
-            "title": "Lluvia - Lluvia - Canciones Infantiles",
-            "artist": "Various",
-            "length": "1:45",
-            "path": "/Canci\u00f3n_infantil_de_la_lluvia_para_ni\u00f1os_y_beb\u00e9s.mp4"
-        },
-        {
-            "title": "Humpty Dumpty",
-            "artist": "Traditional",
-            "length": "1:10",
-            "path": "/humpty_dumpty.mp4"
-        },
-        {
-            "title": "Un Elefante Se Balanceaba",
-            "artist": "Traditional",
-            "length": "1:30",
-            "path": "/un_elephante_se_balanceaba.mp4"
-        }
+      {
+        "title": "Caballito Blanco",
+        "artist": "Joel Valle",
+        "length": "1:14",
+        "path": "/caballito_blanco.mp4"
+      },
+      {
+        "title": "Tingalayo",
+        "artist": "Daria",
+        "length": "2:19",
+        "path": "/tingalayo.mp4"
+      },
+      {
+        "title": "Lluvia - Lluvia - Canciones Infantiles",
+        "artist": "Various",
+        "length": "1:56",
+        "path": "/Canción_infantil_de_la_lluvia_para_niños_y_bebés.mp4"
+      },
+      {
+        "title": "Humpty Dumpty",
+        "artist": "Traditional",
+        "length": "1:33",
+        "path": "/humpty_dumpty.mp4"
+      },
+      {
+        "title": "Tengo Una Muñeca Vestida de Azúl",
+        "artist": "Toycantado",
+        "length": "1:06",
+        "path": "/tengo_una_muneca_vestida_de_azul.mp4"
+      }
     ],
     "medium": [
-        {
-            "title": "De Colores",
-            "artist": "Traditional",
-            "length": "2:30",
-            "path": "/decolores.mp4"
-        },
-        {
-            "title": "El Barquito Chiquitito",
-            "artist": "Traditional",
-            "length": "1:55",
-            "path": "/barquito.mp4"
-        },
-        {
-            "title": "La Gallina Turuleca",
-            "artist": "Traditional",
-            "length": "2:15",
-            "path": "/gallina.mp4"
-        },
-        {
-            "title": "Mambru Se Fue A La Guerra",
-            "artist": "Traditional",
-            "length": "2:45",
-            "path": "/mambru.mp4"
-        },
-        {
-            "title": "Mi Burrito Sabanero",
-            "artist": "Traditional",
-            "length": "3:05",
-            "path": "/Mi_Burrito_Sabanero.mp4"
-        }
+      {
+        "title": "De Colores",
+        "artist": "Joan Baez",
+        "length": "2:28",
+        "path": "/decolores.mp4"
+      },
+      {
+        "title": "El Barquito Chiquitito",
+        "artist": "ToyContando",
+        "length": "2:16",
+        "path": "/barquito.mp4"
+      },
+      {
+        "title": "La Gallina Turuleca",
+        "artist": "El Reino Infantil",
+        "length": "2:57",
+        "path": "/gallina.mp4"
+      },
+      {
+        "title": "Mambru Se Fue A La Guerra",
+        "artist": "Voces Infantiles",
+        "length": "1:55",
+        "path": "/mambru.mp4"
+      },
+      {
+        "title": "Mi Burrito Sabanero",
+        "artist": "The Orchard Enterprises",
+        "length": "3:13",
+        "path": "/Mi_Burrito_Sabanero.mp4"
+      }
     ],
     "hard": [
-        {
-            "title": "A La Loco",
-            "artist": "Mila Egred",
-            "length": "2:31",
-            "path": "/a_la_loco.mp4"
-        },
-        {
-            "title": "Vuela Libre",
-            "artist": "Jerry Rivera",
-            "length": "4:47",
-            "path": "/vuela_libre.mp4"
-        },
-        {
-            "title": "Enloquecer",
-            "artist": "Various",
-            "length": "3:45",
-            "path": "/enloquecer.mp4"
-        },
-        {
-            "title": "Mamacita",
-            "artist": "Mike Leite",
-            "length": "3:14",
-            "path": "/Mamacita.mp4"
-        },
-        {
-            "title": "La Mar Estaba Serena",
-            "artist": "Traditional",
-            "length": "2:50",
-            "path": "/mar_serena.mp4"
-        }
+      {
+        "title": "A La Loco",
+        "artist": "Mila Egred",
+        "length": "2:33",
+        "path": "/a_la_loco.mp4"
+      },
+      {
+        "title": "Vuela Libre",
+        "artist": "Jerry Rivera",
+        "length": "4:51",
+        "path": "/vuela_libre.mp4"
+      },
+      {
+        "title": "Enlouquecer",
+        "artist": "Mike Leite",
+        "length": "3:08",
+        "path": "/enlouquecer.mp4"
+      },
+      {
+        "title": "Mamacita",
+        "artist": "Mike Leite",
+        "length": "3:16",
+        "path": "/Mamacita.mp4"
+      },
+      {
+        "title": "Un Elefante Se Balanceaba",
+        "artist": "Appuseries",
+        "length": "1:16",
+        "path": "/un_elephante_se_balanceaba.mp4"
+      }
     ]
-}
+  }
+  
