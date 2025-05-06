@@ -92,7 +92,7 @@ export default function Dashboard() {
         title: "Lluvia - Lluvia - Canciones Infantiles",
         artist: "Various",
         length: "1:45",
-        path: "/lluvia.mp4",
+        path: "/Canción_infantil_de_la_lluvia_para_niños_y_bebés.mp4",
       },
       {
         title: "Humpty Dumpty",
@@ -100,11 +100,12 @@ export default function Dashboard() {
         length: "1:10",
         path: "/humpty_dumpty.mp4",
       },
+
       {
-        title: "Un Elefante Se Balanceaba",
-        artist: "Traditional",
-        length: "1:30",
-        path: "/un_elephante_se_balanceaba.mp4",
+        title: "Tengo Una Muñeca Vestida de Azúl",
+        artist: "Toycantado",
+        length: "1:06",
+        path: "/tengo_una_muneca_vestida_de_azul.mp4",
       },
     ],
     medium: [
@@ -136,7 +137,7 @@ export default function Dashboard() {
         title: "Mi Burrito Sabanero",
         artist: "Traditional",
         length: "3:05",
-        path: "/burrito.mp4",
+        path: "/Mi_Burrito_Sabanero.mp4",
       },
     ],
     hard: [
@@ -148,8 +149,8 @@ export default function Dashboard() {
       },
       {
         title: "Vuela Libre",
-        artist: "Javier De Lucas",
-        length: "3:20",
+        artist: "Jerry Rivera",
+        length: "4:47",
         path: "/vuela_libre.mp4",
       },
       {
@@ -162,13 +163,13 @@ export default function Dashboard() {
         title: "Mamacita",
         artist: "Mike Leite",
         length: "3:14",
-        path: "/mamacita.mp4",
+        path: "/Mamacita.mp4",
       },
       {
-        title: "La Mar Estaba Serena",
+        title: "Un Elefante Se Balanceaba",
         artist: "Traditional",
-        length: "2:50",
-        path: "/mar_serena.mp4",
+        length: "1:30",
+        path: "/un_elephante_se_balanceaba.mp4",
       },
     ],
   };

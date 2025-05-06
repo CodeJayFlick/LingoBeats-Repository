@@ -1,11 +1,15 @@
 # LingoBeats
+An interactive web application to enhance Spanish-English language learning through music and quizzes
 
-## Prerequisites
+## Checkout Our Web App
+[https://lingo-beats.netlify.app/](url) 
+
+## Running the Project Locally
+
+### Prerequisites
 Ensure you have the following installed:
 - [pnpm](https://pnpm.io/installation)
 - Node.js (recommended latest LTS version)
-
-## Running the Project Locally
 
 1. **Clone the Repository**
    ```sh

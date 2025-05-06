@@ -26,6 +26,9 @@ importers:
       mongoose:
         specifier: ^8.13.2
         version: 8.13.2
+      react-circular-progressbar:
+        specifier: ^2.2.0
+        version: 2.2.0(react@19.1.0)
 
 packages:
 
@@ -345,6 +348,15 @@ packages:
   raw-body@3.0.0:
     resolution: {integrity: sha512-RmkhL8CAyCRPXCE28MMH0z2PNWQBNk2Q09ZdxM9IOOXwxwZbN+qbWaatPkdkWIKL2ZVDImrN/pK5HTRz2PcS4g==}
     engines: {node: '>= 0.8'}
+
+  react-circular-progressbar@2.2.0:
+    resolution: {integrity: sha512-cgyqEHOzB0nWMZjKfWN3MfSa1LV3OatcDjPz68lchXQUEiBD5O1WsAtoVK4/DSL0B4USR//cTdok4zCBkq8X5g==}
+    peerDependencies:
+      react: '>=0.14.0'
+
+  react@19.1.0:
+    resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
+    engines: {node: '>=0.10.0'}
 
   router@2.2.0:
     resolution: {integrity: sha512-nLTrUKm2UyiL7rlhapu/Zl45FwNgkZGaCpZbIHajDYgwlJCOzLSk+cIPAnsEqV955GjILJnKbdQC1nVPz+gAYQ==}
@@ -751,6 +763,12 @@ snapshots:
       http-errors: 2.0.0
       iconv-lite: 0.6.3
       unpipe: 1.0.0
+
+  react-circular-progressbar@2.2.0(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+
+  react@19.1.0: {}
 
   router@2.2.0:
     dependencies:
