@@ -11,14 +11,15 @@ async function registerUser(username, password) {
     }
 
     // Password Validation from Cody Franecki
-    // A password must contain at least 8 characters, 
-    // including at least one uppercase letter, one lowercase letter, 
+    // A password must contain at least 8 characters,
+    // including at least one uppercase letter, one lowercase letter,
     // one number, and one special character.
-    const password_Regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/;
+    const password_Regex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/;
     if (!password_Regex.test(password)) {
       throw new Error(
         "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one number, and one special character."
-      )
+      );
     }
 
     const db = await connectToDB();
@@ -46,7 +47,7 @@ async function registerUser(username, password) {
         scores: [],
       },
       {
-        name: "Un Elefante Se Balanceaba",
+        name: "Tengo Una Muñeca Vestida de Azúl",
         difficulty: "easy",
         scores: [],
       },
@@ -90,7 +91,7 @@ async function registerUser(username, password) {
         scores: [],
       },
       {
-        name: "Enloquecer",
+        name: "Enlouquecer",
         difficulty: "hard",
         scores: [],
       },
@@ -100,7 +101,7 @@ async function registerUser(username, password) {
         scores: [],
       },
       {
-        name: "La Mar Estaba Serena",
+        name: "Un Elefante Se Balanceaba",
         difficulty: "hard",
         scores: [],
       },
